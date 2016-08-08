@@ -14,7 +14,7 @@ end
 def each_entry_with_key(dir = PASS_DIR, keys = nil, &block)
   keys = keys(dir) || keys
   fail('no encryption keys found') unless keys
-  Dir[File.join(dir, '{,.}**', '{,.}*.gpg')].each { |entry| yield(entry) }
+  Dir[File.join(dir, '{,.}**', '{,.}*.gpg')].each { |entry| yield(entry, keys) }
 end
 
 each_entry_with_key do |entry, keys|
